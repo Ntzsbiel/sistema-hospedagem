@@ -17,18 +17,16 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            
-            if (hospedes.Count <= Suite.Capacidade )
-            { 
+            // Verifica se a capacidade é maior ou igual ao número de hóspedes sendo recebido
+
+            if (hospedes.Count <= Suite.Capacidade)
+            {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
-                throw new Exception("Capacidade de Hospedes nao suportada");
+                // Retorna uma exception caso a capacidade seja menor que o número de hóspedes recebido
+                throw new Exception("Capacidade de Hospedes não suportada");
             }
         }
 
@@ -37,28 +35,28 @@ namespace DesafioProjetoHospedagem.Models
             Suite = suite;
         }
 
-        public int ObterQuantidadeHospedes()
+        public string ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            // Retorna a quantidade de hóspedes (propriedade Hospedes)
+            return $"A quantidade de hóspedes é: {Hospedes.Count }";
         }
 
-        public decimal CalcularValorDiaria()
+        public string CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
+            // Retorna o valor da diária
             // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
-
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+
+            decimal valor = 0M;
+
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+                valor = (Suite.ValorDiaria * DiasReservados) * 0.90M ;
+            }else{
+                valor = (Suite.ValorDiaria * DiasReservados);
             }
 
-            return valor;
+            return $"O valor total para {DiasReservados} dias é: {valor.ToString("C")}";
         }
     }
 }
